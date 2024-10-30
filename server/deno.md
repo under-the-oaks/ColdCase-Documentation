@@ -1,8 +1,19 @@
 # Deno Server
 
+## .env 
+
+in the .env are environment variables saved that are not uploaded to github.  
+
+here are the required variables: 
+
+```
+REDIS_PASSWORD=YOUR_PASSWORD
+```
+
+--- 
 ## main.ts 
 
-The main files contains code to serve static files from the public folder.
+The main files contains code to serve static files from the public folder and the redis connection. 
 
 ---
 
