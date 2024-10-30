@@ -42,7 +42,7 @@ Edit the Redis configuration file (usually located at `/etc/redis/redis.conf`) t
    requirepass "your_redis_password"
    ```
 3. **open port**
-   (opening the port in the fierewall may be needet **standart port is 6379**(TCP)):
+   To ensure Redis can be accessed via the internet, port **6379/TCP** must be allowed through your firewall.
 ---
 
 ## Restart Redis to Apply Changes
