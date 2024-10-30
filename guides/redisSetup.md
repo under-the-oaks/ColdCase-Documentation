@@ -50,7 +50,7 @@ Edit the Redis configuration file (usually located at `/etc/redis/redis.conf`) t
 Once you have made the necessary changes, restart the Redis service:
 
 ```bash
-sudo systemctl restart redis
+sudo systemctl restart redis-server
 ```
 
 
