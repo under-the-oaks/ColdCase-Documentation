@@ -10,10 +10,23 @@ After compleating each issue it is mandatory to note your time spend on the issu
 ## Working on an issue
 
 ### Feature branch
-If the issue requires changes to the repository you create a new branch for the issue, called feature branch.  
+If the issue requires changes to the repository you create a new branch for the issue. Such a branch is called a feature branch.
+
 This can be done from the issue:   
 
 ![alt text](image-2.png)
+
+#### Naming convention for feature branch
+
+Feature branch name as follows "[Repository#issue-nr] issue title".  
+Bsp.: [D#9] update feature branch naming convention
+
+The Repository is abbreviated with:
+- 'S' for ColdCase-Server
+- 'C' for ColdCase-Client
+- 'D' for ColdCase-Documentation
+
+This done so branches can be deterministically assigned one issue across all repositorys.
 
 ---
 ### Coding best practices
@@ -23,8 +36,16 @@ This can be done from the issue:
 ---
 ### Commit Messages
 
-Commit message as follows "[#issue-nr] Description of your changes".  
-Bsp.: [#7] Added Tile Content to Tile
+Commit message as follows "[Repository#issue-nr] Description of your changes".  
+Bsp.: S[#7] Added Tile Content to Tile
+
+The Repository is abbreviated with:
+- 'S' for ColdCase-Server
+- 'C' for ColdCase-Client
+- 'D' for ColdCase-Documentation
+
+This done so commits can be deterministically assigned one issue across all repositorys.
+
 
 ---
 ### Pushing to development
