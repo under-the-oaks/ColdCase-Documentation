@@ -46,7 +46,7 @@ concept art or reference art can you show to give the feel of the game? -->
 - Adventurer/Detective solving Puzzles together with a/his ghost in a different realm
 - the Detective (living) Player wants to solve a Murder Mystery by exploring the ruin in which the murder happened
 - in the end it is revealed that the ghost is the dead detective, who dies in the end and travels back in time to help his living self out -> both players can switch places and replay
-Platform(s), Technologie, and Scope
+### Platform(s), Technologie, and Scope
 <!-- PC or mobile? Table or phone? 2D or 3D? Unity or Javascript? How long to make, and how big a team?
 How long to first-playable? How long to complete the game? Major risks? -->
 
