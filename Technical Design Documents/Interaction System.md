@@ -187,7 +187,7 @@ The system distinguishes between three visibility states for `TileContent`:
   - `applyRemoteGSUs()`: Signals the remote client to apply its GSUs.
   - `abortRemoteInteractionChain()`: Instructs the remote client to discard its snapshot.
 - **Data Transmission**:
-  - Uses JSON or binary format for efficiency.
+  - Uses JSON for efficiency.
   - Includes action types, parameters, and state information.
 - **Synchronization Strategy**:
   - Ensures both clients have consistent game states after transcendent interactions.
