@@ -9,9 +9,9 @@ Players must work together strategically to uncover clues and reveal the secrets
 
 Contributors:
 
-    Yassine Ouhmid  - Doku
-    Max Becker      - Coordination
-    [Contributor Name] - [Role]
-    [Contributor Name] - [Role]
+    Yassine Ouhmid    - Doku
+    Max Becker        - Coordination
+    Toni Bingenheimer - Quality
+    Jonathan Christe  - Quality
     [Contributor Name] - [Role]
     [Contributor Name] - [Role]
