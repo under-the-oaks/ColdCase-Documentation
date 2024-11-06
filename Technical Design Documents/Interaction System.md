@@ -113,7 +113,6 @@ The system distinguishes between three visibility states for `TileContent`:
   - `updateData`: Data required to perform the update.
 - **Responsibilities**:
   - Encapsulates changes to be made to the game state.
-  - Facilitates rollback in case of invalid interactions.
 
 ---
 
