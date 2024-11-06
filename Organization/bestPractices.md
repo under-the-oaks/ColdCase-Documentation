@@ -9,11 +9,22 @@ After compleating each issue it is mandatory to note your time spend on the issu
 
 ## Working on an issue
 
-### Feature branch
-If the issue requires changes to the repository you create a new branch for the issue, called feature branch.  
-This can be done from the issue:   
+### New branch
+If the issue requires changes to the repository you create a new branch for the issue. Such a branch is called a feature or bug branch, depending on the type of issue.
+
+This can be done from the issue (see image below), which links the new branch to the issue automatically. Alternatively, this can be done manually by clicking on the cog icon next to the "Development" Section of the issue.
+
+**ALWAYS LINK YOUR BRANCH TO THE CORRESPONDING ISSUE**
 
 ![alt text](image-2.png)
+
+
+#### Naming convention for feature branch
+
+Feature branch name as follows "NR-issue-name-in-kebap-case".  
+Bsp.: 9-update-feature-branch-naming-convention
+
+
 
 ---
 ### Coding best practices
@@ -23,8 +34,9 @@ This can be done from the issue:
 ---
 ### Commit Messages
 
-Commit message as follows "[#issue-nr] Description of your changes".  
-Bsp.: [#7] Added Tile Content to Tile
+Commit message name as follows "NR short summary of your changes".  
+Bsp.: "9 changed naming conventio to kabab case for issue branches"
+
 
 ---
 ### Pushing to development
