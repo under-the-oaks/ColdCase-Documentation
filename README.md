@@ -11,7 +11,7 @@ Contributors:
 
     Yassine Ouhmid    - Doku
     Max Becker        - Coordination
-    Toni Bingenheimer - Quality
-    Jonathan Christe  - Quality
+    Toni Bingenheimer - Quality Control
+    Jonathan Christe  - Quality Control
     [Contributor Name] - [Role]
     [Contributor Name] - [Role]
