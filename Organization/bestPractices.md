@@ -34,7 +34,7 @@ Bsp.: 9-update-feature-branch-naming-convention
 ---
 ### Commit Messages
 
-Feature branch name as follows "NR short summary of your changes".  
+Commit message name as follows "NR short summary of your changes".  
 Bsp.: "9 changed naming conventio to kabab case for issue branches"
 
 
