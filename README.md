@@ -13,5 +13,5 @@ Contributors:
     Max Becker        - Coordination
     Toni Bingenheimer - Quality Control
     Jonathan Christe  - Quality Control
-    [Contributor Name] - [Role]
+    Daniel Mayer - Coordination
     [Contributor Name] - [Role]
