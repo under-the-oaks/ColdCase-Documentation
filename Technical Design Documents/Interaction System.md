@@ -18,6 +18,7 @@
 6. [Error Handling](#6-error-handling)
 7. [Performance Considerations](#7-performance-considerations)
 8. [Conclusion](#8-conclusion)
+9. [Graphik](#9-Graphik)
 
 ---
 
@@ -239,5 +240,13 @@ The system distinguishes between three visibility states for `TileContent`:
 The designed interaction system provides a robust framework for handling complex player interactions in an asynchronous multiplayer environment. By utilizing snapshots and interaction chains, the system ensures that all actions are validated before affecting the active game state. The differentiation between local and transcendent interactions allows for efficient processing and minimal network dependency, enhancing overall game performance and player experience.
 
 ---
+
+## 9. Graphik
+
+![GameController](https://github.com/user-attachments/assets/9f614126-6c18-4ab4-8ee9-e8c904ba66d6)
+
+
+---
+
 
 **Note**: This design assumes that security and cheat prevention are not priorities for this project, as specified. However, should these concerns arise in the future, additional measures such as server-side validation and encrypted communications may be necessary.
