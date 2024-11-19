@@ -24,7 +24,58 @@ This can be done from the issue (see image below), which links the new branch to
 Feature branch name as follows "NR-issue-name-in-kebap-case".  
 Bsp.: 9-update-feature-branch-naming-convention
 
+### Commenting your Implementation
 
+Anotate your Classes and Methods with JavaDoc!
+
+#### Classes
+
+Short description of the class, what it is supposed to do and what dependencies it has.
+
+Bsp.:
+```java
+/**
+ * Class for generating maps from text files.
+ * <p>
+ * This class is a singleton, and can be accessed using the {@link #getInstance()} method.
+ * It provides methods for serializing and deserializing maps to and from JSON.
+ * The JSON format used is the one provided by the {@link Json} class provided by libGDX.
+ */
+public class MapGenerator {}
+```
+
+#### Methods
+
+Use the `@param`, `@throws` and the `@returns` JavaDoc annotations.
+
+Bsp.:
+```java
+/**
+* Continuously updates the map until no further updates are possible.
+*
+* <p>Keeps trying to update the map with the given {@code InteractionChain} until no more changes occur.</p>
+*
+* @param chain the {@code InteractionChain} used to manage interactions and snapshots during updates
+* @throws IllegalStateException if the maximum iteration limit is exceeded, suggesting a potential cyclic dependencyn {@code TileContent}.
+* @implNote This method has a limit on the number of iterations to prevent endless loops. If one {@code TileContent}
+* triggers another in a cyclic manner, the loop may otherwise never terminate.
+*/
+public void updateUntilStable(InteractionChain chain) throws GameStateUpdateException {...}
+```
+
+
+### Testing your Implementation
+
+Befor creating your PR you should always write new or update existing tests for your code changes. Code Coverage has to be above 80% for files you changed!
+
+To create an Overview about the the different logcal paths of your implementation you should always document the edgecases to test in the JavaDoc of the Method:
+```java
+/**
+* @implNote case x should result in method call y
+*           case z should result in method call a
+*           The code has <this unique feature> you need to consider when testing
+*/
+```
 
 ---
 ### Coding best practices
