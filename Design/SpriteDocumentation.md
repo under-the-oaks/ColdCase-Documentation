@@ -24,4 +24,10 @@ G = Ghost World
 
 -[ ] Glove N
 
+
+-[ ] Portal 
+
+
+-[ ] Door 
+
 ### Comments & Recommendations
