@@ -22,6 +22,12 @@ G = Ghost World
 -[x] Standard Block G
 
 
--[ ] Glove N
+-[x] Glove N
+
+
+-[x] movableBlock
+
+
+-[x] goalObject
 
 ### Comments & Recommendations
