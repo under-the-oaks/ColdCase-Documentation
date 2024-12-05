@@ -30,4 +30,10 @@ G = Ghost World
 
 -[x] goalObject
 
+
+-[ ] Portal 
+
+
+-[ ] Door 
+
 ### Comments & Recommendations
