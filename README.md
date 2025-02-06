@@ -14,4 +14,5 @@ Contributors:
     Toni Bingenheimer - Quality Control
     Jonathan Christe  - Quality Control
     Daniel Mayer      - Coordination
+    Jonah Funcke      - Documentation (Support)
     [Contributor Name] - [Role]
