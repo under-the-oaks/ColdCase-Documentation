@@ -36,7 +36,8 @@ concept art or reference art can you show to give the feel of the game? -->
 
 #### Inspiration
 
-- ![monogon-isometricdungeon asset pack](https://maxparata.itch.io/monogon-isometricdungeon)
+- ![![image](https://github.com/user-attachments/assets/a2a3b48a-2104-48cf-81e1-eb9983d1c175)
+](https://maxparata.itch.io/monogon-isometricdungeon)
 
 
 
