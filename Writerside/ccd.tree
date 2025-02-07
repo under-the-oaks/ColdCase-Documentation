@@ -31,6 +31,8 @@
         </toc-element>
         <toc-element toc-title="Server">
             <toc-element topic="Overview.md"/>
+            <toc-element topic="Architecture.md"/>
+            <toc-element topic="TechnicalDetails-md.md"/>
         </toc-element>
     </toc-element>
     <toc-element toc-title="Tutorials">
