@@ -1,42 +1,40 @@
-# WIP RAW Interaction System
+# Interaction System
 
 ## Table of Contents
 
-1. [Introduction](#1-introduction)
-2. [System Overview](#2-system-overview)
-3. [Architecture](#3-architecture)
-    - 3.1 [Map](#31-map)
-    - 3.2 [Tile](#32-tile)
-    - 3.3 [TileContent](#33-tilecontent)
-    - 3.4 [GameController](#34-gamecontroller)
-    - 3.5 [Interaction Chains](#35-interaction-chains)
-    - 3.6 [GameStateUpdates (GSUs)](#36-gamestateupdates-gsus)
-4. [Interaction Flow](#4-interaction-flow)
-    - 4.1 [Local Interactions](#41-local-interactions)
-    - 4.2 [Transcendent Interactions](#42-transcendent-interactions)
-5. [Networking and Synchronization](#5-networking-and-synchronization)
-6. [Error Handling](#6-error-handling)
-7. [Performance Considerations](#7-performance-considerations)
-8. [Conclusion](#8-conclusion)
-9. [Graphik](#9-Graphik)
+1. [Introduction](#introduction)
+2. [System Overview](#system-overview)
+3. [Architecture](#architecture)
+    - 3.1 [Map](#map)
+    - 3.2 [Tile](#tile)
+    - 3.3 [TileContent](#tilecontent)
+    - 3.4 [GameController](#gamecontroller)
+    - 3.5 [InteractionChain](#interactionchain)
+    - 3.6 [GameStateUpdates (GSUs)](#gamestateupdates)
+    - 3.7 [Snapshot](#snapshot)
+4. [Interaction Flow](#interaction-flow)
+    - 4.1 [Local Interactions](#local-interactions)
+    - 4.2 [Transcendent (Remote) Interactions](#transcendent-remote-interactions)
+5. [Networking and Synchronization](#networking-and-synchronization)
+6. [Error Handling](#error-handling)
+7. [Performance Considerations](#performance-considerations)
+9. [Diagram](#diagram)
 
 ---
 
 ## 1. Introduction
 
-This document outlines the technical design of the interaction system for an asynchronous multiplayer puzzle game. The game involves two players interacting across two different worlds to solve puzzles together. The interaction system is responsible for handling both basic movements and complex interactions, such as moving a block onto a pressure plate that triggers an action in the other player's world.
+This document provides a mid- to high-level overview of the Coldcase interaction system. It describes how player interactions are processed—both locally and across clients—to produce a consistent game state in an asynchronous multiplayer environment. The system validates actions using snapshots and chains of updates before committing changes. While it complements the detailed Javadoc, it also explains key architectural decisions and interaction flows.
 
 ---
 
 ## 2. System Overview
 
-The core of the interaction system revolves around the `GameController`, which manages interactions within a local instance of the `Map`. The `Map` is a 2D array containing `Tile` objects, each holding a `TileContent`. The `TileContent` represents objects placed upon a `Tile`, such as walls, players, pressure plates, and movable blocks. These contents can stack to represent multiple entities occupying the same tile (e.g., a player standing on a pressure plate).
+At its core, the interaction system centers on a single, centralized controller (the **GameController**) that manages the active game map, processes interaction requests, and coordinates both local and remote updates. The game world is modeled as a 2D array of **Tile** objects, where each tile holds a stack of **TileContent** entities. Actions initiated by the player result in the creation of an **InteractionChain**—a temporary, simulated copy (via a **Snapshot**) of the game state. This chain gathers a series of **GameStateUpdates (GSUs)** before the validated changes are applied to the active map.
 
-The system distinguishes between three visibility states for `TileContent`:
-
-- **Player One Only**: Visible and interactive only to player one.
-- **Player Two Only**: Visible and interactive only to player two.
-- **Transcendent**: Visible and interactive to both players.
+Key aspects include:
+- **Local Interactions:** Actions processed and validated using local snapshots.
+- **Transcendent (Remote) Interactions:** Actions that affect both players’ views are coordinated with a remote counterpart through a **RemoteGameController**.
 
 ---
 
@@ -44,209 +42,205 @@ The system distinguishes between three visibility states for `TileContent`:
 
 ### 3.1 Map
 
-- **Description**: Represents the game world as a 2D array of `Tile` objects.
-- **Responsibilities**:
-    - Maintains the state of all tiles and their contents.
-    - Provides methods to access and modify tiles.
+- **Purpose:** Represents the game world as a 2D array of `Tile` objects.
+- **Responsibilities:**
+    - Provide access to individual tiles (e.g., `Tile getTile(int x, int y)` or `Tile getTile(Vector2 pos)`).
+    - Manage map updates and deep cloning (used in creating snapshots).
 
 ### 3.2 Tile
 
-- **Description**: Represents a single position on the `Map`.
-- **Properties**:
-    - `TileContent content`: The content placed on the tile.
-- **Responsibilities**:
-    - Holds the `TileContent`.
-    - Manages stacking of multiple `TileContent` objects.
+- **Purpose:** Encapsulates a single position in the game world.
+- **Responsibilities:**
+    - Store a stack of `TileContent` entities.
+    - Support rendering via methods such as `render(Batch batch, float x, float y)`.
+    - Manage tile content with methods like `pushTileContent()`, `popTileContent()`, and `topTileContent()`.
 
 ### 3.3 TileContent
 
-- **Description**: Abstract class representing any object placed upon a `Tile`.
-- **Properties**:
-    - `TileContent nextContent`: Reference to the next content in the stack.
-    - `VisibilityState visibilityState`: Indicates visibility to players.
-- **Methods**:
-    - `action()`: Defines the action to be performed when interacted with.
-    - `update()`: Updates the state based on interactions.
-- **Responsibilities**:
-    - Represents game entities like walls, players, pressure plates, and movable blocks.
-    - Handles interactions and updates.
+- **Purpose:** Abstract base class for any entity that occupies a tile.
+- **Key Methods/Signatures:**
+    - `public abstract boolean action(InteractionChain chain, Interaction interaction) throws GameStateUpdateException;`
+    - `public abstract boolean update(InteractionChain chain, Vector2 tilePosition, Interaction interaction, TileContent handler) throws GameStateUpdateException, UpdateTileContentException;`
+- **Responsibilities:**
+    - Represent game objects (e.g., players, blocks, walls).
+    - Provide recursive handling of actions and updates through methods such as `handleAction()` and `handleUpdate()`.
+    - Support stacking of multiple contents on a single tile.
 
 ### 3.4 GameController
 
-- **Description**: Central manager on each client responsible for handling interactions.
-- **Properties**:
-    - `Map currentMap`: The active game map.
-    - `Queue<GameStateUpdate> gsuQueue`: Queue of GSUs to apply.
-    - `Snapshot snapshotMap`: Copy of the map used for simulating interactions.
-- **Methods**:
-    - `createSnapshot()`: Creates a snapshot of the current `Map`.
-    - `appendGSU(GameStateUpdate gsu)`: Adds a GSU to the queue.
-    - `applyGSUs()`: Applies all GSUs in the queue to the active game state.
-    - `abortInteractionChain()`: Discards the snapshot and clears the GSU queue.
-- **Responsibilities**:
-    - Manages interaction chains and validates actions.
-    - Coordinates transcendent interactions with the remote client.
-    - Provides feedback on invalid actions.
+- **Purpose:** Central manager that processes interactions within the game.
+- **Key Characteristics:**
+    - **Singleton Pattern:** Accessed via `GameController.getInstance()`.
+    - **Core Methods/Signatures:**
+        - `public boolean triggerAction(Interaction interaction)`
+        - `public static TileContent triggerLocalAction(InteractionChain chain, Interaction interaction)`
+    - **Responsibilities:**
+        - Create and manage snapshots via **Snapshot**.
+        - Maintain a stack of **InteractionChain** objects and a queue of pending GSUs.
+        - Coordinate local interactions and trigger remote actions (using **RemoteGameController**) when a transcendent action occurs.
+        - Validate and apply updates only after all interactions in the chain have been successfully simulated.
 
-### 3.5 Interaction Chains
+### 3.5 InteractionChain
 
-- **Description**: Sequences of interactions resulting from a player's action.
-- **Flow**:
-    1. Player initiates an action.
-    2. `GameController` creates a snapshot of the current `Map`.
-    3. Actions are simulated on the snapshot.
-    4. GSUs are appended to the `gsuQueue`.
-    5. Additional interactions triggered by the initial action are processed.
-    6. If all actions are valid, GSUs are applied to the active game state.
-- **Responsibilities**:
-    - Ensures interactions are error-free before applying them.
-    - Manages cascading effects of interactions.
+- **Purpose:** Represents a sequence of interactions initiated by a player’s action.
+- **Key Methods/Signatures:**
+    - `public void addAction(Interaction interaction)`
+    - `public Queue<GameStateUpdate> getGSUQueue()`
+- **Responsibilities:**
+    - Hold a snapshot of the game state (via **Snapshot**) for safe simulation.
+    - Accumulate pending local and remote actions.
+    - Gather GSUs that encapsulate atomic changes to be applied if the entire interaction chain is valid.
 
 ### 3.6 GameStateUpdates (GSUs)
 
-- **Description**: Abstract class representing atomic changes to the game state.
-- **Types**:
-    - **Map Modification**: Changes to the map structure (e.g., moving an object).
-    - **Visual Effects**: Particle effects or animations.
-    - **Audio Effects**: Sound effects corresponding to actions.
-- **Properties**:
-    - `updateType`: The type of update.
-    - `updateData`: Data required to perform the update.
-- **Responsibilities**:
-    - Encapsulates changes to be made to the game state.
+- **Purpose:** Abstract class representing an atomic update to the game state.
+- **Key Methods/Signatures:**
+    - `public abstract void apply(Map map)`
+- **Responsibilities:**
+    - Encapsulate changes (such as moving an object or triggering visual/audio effects).
+    - Be queued during an interaction chain and applied only if all interactions pass validation.
+- **Note:** Implementations such as `MoveUpdate` serve as concrete realizations, though detailed internals (e.g., rotation changes for players) are abstracted here.
+
+### 3.7 Snapshot
+
+- **Purpose:** Provides a deep-cloned copy of the current game state.
+- **Responsibilities:**
+    - Allow for safe simulation of interactions without immediately affecting the active game state.
+    - Be used by the **InteractionChain** to validate complex or cascaded interactions.
 
 ---
 
 ## 4. Interaction Flow
 
+The interaction flow is the core mechanism that processes player actions, ensuring that only fully validated and consistent updates are applied to the game state. The system simulates each action on a deep-cloned snapshot of the current map, accumulates a chain of updates, and only commits those changes once all cascading effects have been successfully validated. This process is divided into two main parts: local interactions and transcendent (remote) interactions.
+
 ### 4.1 Local Interactions
 
-**Process**:
+**Overview:**  
+Local interactions simulate and validate a player’s action within a deep-cloned snapshot of the game state. This ensures that no changes are committed to the active map until the complete chain of effects (including cascading updates) is confirmed as valid.
 
-1. **Action Request**: The player requests a new interaction chain via the `GameController`.
-2. **Snapshot Creation**: The `GameController` creates a snapshot of the current `Map`.
-3. **Action Execution**: The player requests to append an interaction to a `TileContent`.
-    - The `GameController` calls the `action()` method of the target `TileContent`.
-    - The `TileContent` appends necessary GSUs using `appendGSU()`.
-4. **GSU Queue Update**: The `GameController` adds the GSUs to the `gsuQueue`.
-5. **Trigger Check**: The `GameController` checks for additional triggered actions.
-    - If additional `TileContents` need updating, their `update()` methods are called.
-6. **Validation**: If no errors occur during simulation, the interaction chain is valid.
-7. **Application**: The player invokes `applyGSUs()`, applying all GSUs to the active `Map`.
-8. **Feedback**: Success or failure is communicated to the player through visuals or sounds.
+**Detailed Steps:**
 
-**Example**:
+1. **Action Request Initiation:**
+    - When a player initiates an action, the system calls the `GameController.triggerAction(Interaction interaction)` method.
+    - A new **InteractionChain** is created. This chain encapsulates a deep-cloned snapshot of the active **Map**, ensuring that simulations are isolated from the actual game state.
 
-- **Action**: Player moves a block onto a pressure plate.
-- **Flow**:
-    - The block's `action()` moves it onto the pressure plate.
-    - The pressure plate's `update()` triggers a door to open.
-    - All actions are validated in the snapshot before applying.
+2. **InteractionChain Management:**
+    - The GameController uses a stack of InteractionChains to handle nested or cascading actions.
+    - The new InteractionChain is pushed onto this stack, providing a context for any additional actions triggered by the initial event.
 
-### 4.2 Transcendent Interactions
+3. **Local Action Execution on the Snapshot:**
+    - The system invokes the `triggerLocalAction(InteractionChain chain, Interaction interaction)` method.
+    - **Target Resolution:**
+        - The snapshot is queried for the target **Tile** using the coordinates provided in the Interaction.
+        - The corresponding **TileContent** is retrieved from the tile. If the tile contains stacked contents, the call to `handleAction(InteractionChain, Interaction)` propagates recursively until the proper handler is found.
+    - **Action Simulation:**
+        - The `action()` method of the identified TileContent is executed. This simulates the action (for example, moving an object or stepping onto a pressure plate) without altering the active game state.
 
-**Process**:
+4. **Cascading Updates and Stability Check:**
+    - Many interactions cause additional updates (e.g., a pressure plate might trigger a door to open).
+    - The system processes these subsequent effects by calling `update()` or `handleUpdate()` on the affected TileContents.
+    - To ensure that all cascading effects are captured, the method `updateUntilStable()` is executed. This method repeatedly applies updates until no further changes occur or a maximum iteration threshold is reached (to prevent infinite loops in the case of cyclic dependencies).
+    - As each valid change is simulated, a corresponding **GameStateUpdate (GSU)** is generated and added to the InteractionChain’s GSU queue.
 
-1. **Action Request**: The player initiates an action on a transcendent `TileContent`.
-2. **Snapshot Creation**:
-    - Local `GameController` creates a local snapshot.
-    - Via API, requests the remote client to create a snapshot.
-3. **Local Action Execution**:
-    - The local `TileContent`'s `action()` method is called.
-    - GSUs are appended locally.
-4. **Remote Action Execution**:
-    - The local `GameController` requests the remote client to append a remote interaction.
-    - The remote `GameController` calls the corresponding `action()` method on its snapshot.
-    - GSUs are appended on the remote client.
-5. **Validation**:
-    - Both clients validate their interaction chains.
-    - If successful, both proceed; if not, the process aborts.
-6. **Application**:
-    - Local client calls `applyGSUs()`.
-    - Signals the remote client via API to apply its GSUs.
-7. **Abort Mechanism**:
-    - If errors occur, the local client calls `abortRemoteInteractionChain()`.
-    - Both snapshots are discarded, and GSUs are cleared.
-8. **Feedback**: Players are informed of the success or failure of the interaction.
+5. **Validation and Accumulation:**
+    - Once the simulation stabilizes and all cascading interactions are processed, the InteractionChain holds a complete, validated queue of GSUs.
+    - If any part of the chain fails (due to validation errors, timeouts, or exceptions), the entire chain is aborted, ensuring no partial or inconsistent updates are applied.
+    - When successful, the pending GSUs from the InteractionChain are merged into the GameController’s update queue. These GSUs are later applied to the active map, thereby committing the changes.
 
-**Example**:
+### 4.2 Transcendent (Remote) Interactions
 
-- **Action**: Moving a transcendent block that affects both worlds.
-- **Flow**:
-    - Local block movement is simulated.
-    - Remote block movement is requested and simulated.
-    - Both clients apply the GSUs if no errors occur.
+**Overview:**  
+Transcendent interactions extend the local interaction process to actions that affect both players’ game states. This requires synchronizing the local simulation with a remote counterpart to ensure consistency across all clients.
+
+**Detailed Steps:**
+
+1. **Detection of Transcendence:**
+    - After executing a local action, the system checks the visibility state of the target TileContent.
+    - If the content is marked as **TRANSCENDENT**, the action must be replicated on the remote client.
+
+2. **Remote Action Triggering:**
+    - The GameController calls upon the **RemoteGameController** to trigger the corresponding action remotely.
+    - **Key Method Signature:**  
+      `public Queue<Interaction> triggerAction(Interaction interaction, boolean suppressTranscendentFollowUp)`  
+      The `suppressTranscendentFollowUp` flag prevents endless loops by avoiding recursive remote calls.
+    - A future-based synchronization mechanism (with a timeout) is used to wait for the remote response.
+
+3. **Remote Snapshot and InteractionChain:**
+    - On the remote client, a similar process unfolds: a new InteractionChain is created with its own snapshot of the game state.
+    - The remote GameController processes the action in a manner identical to the local system, generating its own queue of GSUs and handling any cascading effects.
+    - The remote response returns a queue of pending interactions (if any) that need to be integrated into the local chain.
+
+4. **Synchronization and Merging:**
+    - After both local and remote simulations are completed, the system validates that the overall interaction chain is consistent across clients.
+    - The remote GSUs and any additional pending remote interactions are merged into the local InteractionChain.
+    - Only if both sides validate the full chain does the system proceed with applying the updates.
+
+5. **Finalization and Application:**
+    - Once synchronization is confirmed, both local and remote GameControllers apply their respective GSUs to the active game state.
+    - This step finalizes the interaction, ensuring that the state is updated in a synchronized fashion across all connected clients.
+
+6. **Error Recovery and Abortion:**
+    - If an error occurs at any point during remote processing (for example, a timeout or an invalid update), the local GameController will invoke the remote abort mechanism.
+    - The **RemoteGameController.close()** method is called to abort pending remote GSUs, and the entire interaction chain is discarded to maintain state consistency.
+
+**Key Signatures Involved:**
+- **Local Trigger:**  
+  `public boolean triggerAction(Interaction interaction)`
+- **Local Handling:**  
+  `public static TileContent triggerLocalAction(InteractionChain chain, Interaction interaction)`
+- **Remote Trigger:**  
+  `public Queue<Interaction> triggerAction(Interaction interaction, boolean suppressTranscendentFollowUp)`
 
 ---
 
+[INSERT UML DIAGRAM SHOWCASING GameController, InteractionChain, and Snapshot interactions]
+
 ## 5. Networking and Synchronization
 
-- **Server Framework**: Deno server using WebSockets for real-time communication.
-- **API Endpoints**:
-    - `createRemoteInteractionChain()`: Instructs the remote client to create a snapshot.
-    - `appendRemoteInteraction(action)`: Requests the remote client to execute an action.
-    - `applyRemoteGSUs()`: Signals the remote client to apply its GSUs.
-    - `abortRemoteInteractionChain()`: Instructs the remote client to discard its snapshot.
-- **Data Transmission**:
-    - Uses JSON for efficiency.
-    - Includes action types, parameters, and state information.
-- **Synchronization Strategy**:
-    - Ensures both clients have consistent game states after transcendent interactions.
-    - Minimizes latency impact by limiting network calls to essential interactions.
-- **Failure Handling**:
-    - Network failures trigger abort mechanisms to maintain game state integrity.
-    - Retries or error messages are implemented as needed.
+The interaction system uses WebSocket communication brokered by a Deno server. The **RemoteGameController** class is responsible for handling remote interaction chains. Key aspects include:
+- **Remote Action Triggering:**
+    - Method signature: `public Queue<Interaction> triggerAction(Interaction interaction, boolean suppressTranscendentFollowUp)`
+    - Synchronization is handled through a future-based mechanism with defined timeouts.
+- **GSU Application:**
+    - Remote updates are applied via `applyGSUQueue()`.
+- **Cleanup:**
+    - On completion or error, `close()` is called to abort pending remote updates.
+
+*Note: The remote interaction system will be documented in more detail in its own topic.*
 
 ---
 
 ## 6. Error Handling
 
-- **Invalid Interactions**:
-    - Detected during simulation on the snapshot.
-    - Causes the snapshot to be discarded.
-    - The action is marked invalid, and the player is notified.
-- **Remote Interaction Failures**:
-    - If the remote client reports an unsuccessful interaction, both clients abort the chain.
-    - The local client invokes `abortRemoteInteractionChain()`.
-- **User Feedback**:
-    - Visual cues (e.g., flashing tiles, error messages).
-    - Audio cues (e.g., error sounds).
-- **Logging and Debugging**:
-    - Errors are logged locally for debugging purposes.
-    - Network communication errors are logged with timestamps and details.
+Error management is integrated into both local and remote flows:
+- **Local Interactions:**
+    - Exceptions such as `UpdateTileContentException`, `GameStateUpdateException`, and `TimeoutException` are caught during simulation.
+    - On error, the snapshot is discarded, the interaction chain is aborted, and appropriate feedback (e.g., visual cues) is generated.
+- **Remote Interactions:**
+    - Timeouts and execution errors are similarly handled.
+    - In case of failure, the local controller invokes remote abort methods (via **RemoteGameController.close()**) to ensure state consistency.
+- **Logging:**
+    - Errors are logged (with timestamps and stack traces) to aid in debugging and system stability.
 
 ---
 
 ## 7. Performance Considerations
 
-- **Client Framework**: Using LibGDX for efficient rendering and game logic execution.
-- **Optimization Techniques**:
-    - **Local Interactions**: Processed without server communication for minimal latency.
-    - **Transcendent Interactions**: Network calls are minimized and optimized.
-    - **Data Structures**: Efficient use of arrays and object pooling to reduce memory overhead.
-- **Asynchronous Processing**:
-    - Network communication is handled asynchronously to prevent blocking the main game thread.
-- **Latency Management**:
-    - Anticipate and handle network delays gracefully.
-    - Implement timeouts and retries for network calls.
-- **Resource Management**:
-    - Limit the number of transcendent objects to reduce synchronization overhead.
-    - Optimize textures and assets for better performance on various hardware.
+The system is optimized for responsiveness:
+- **Local Processing:**
+    - Interactions are simulated on snapshots to minimize latency.
+    - Chained actions and GSUs are processed asynchronously.
+- **Remote Efficiency:**
+    - Network calls are minimized and use a future-based synchronization to prevent blocking.
+- **Resource Management:**
+    - Use of efficient data structures (e.g., stacks for interaction chains, queues for GSUs).
+    - Object pooling and deep cloning techniques reduce memory overhead.
+- **Latency Handling:**
+    - Timeouts and retries are built into the remote synchronization process to address potential network delays.
 
 ---
 
-## 8. Conclusion
+## 8. Diagram
 
-The designed interaction system provides a robust framework for handling complex player interactions in an asynchronous multiplayer environment. By utilizing snapshots and interaction chains, the system ensures that all actions are validated before affecting the active game state. The differentiation between local and transcendent interactions allows for efficient processing and minimal network dependency, enhancing overall game performance and player experience.
-
----
-
-## 9. Graphik
-
-![GameController](https://github.com/user-attachments/assets/9f614126-6c18-4ab4-8ee9-e8c904ba66d6)
-
-
----
-
-
-**Note**: This design assumes that security and cheat prevention are not priorities for this project, as specified. However, should these concerns arise in the future, additional measures such as server-side validation and encrypted communications may be necessary.
+[INSERT UML DIAGRAM SHOWCASING GameController, InteractionChain, Snapshot, and their interactions]
