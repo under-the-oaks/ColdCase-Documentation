@@ -1,3 +1,45 @@
-# Client Installation
+# ColdCase Client Installation and Build Guide
 
-!! DEV NOTE !! This should be a guid for Prof Igler how to set up and build the Client project on his machine
+## Quick Installation
+To install the ColdCase client, follow these steps:
+
+1. **Download the latest release:**
+    - Visit [ColdCase Releases](https://github.com/under-the-oaks/ColdCase-Client/releases/latest).
+    - Download the `ColdCase-1.x.x.zip` file (replace `1.x.x` with the latest version).
+
+2. **Extract the archive:**
+    - Choose a suitable directory and extract the contents of the `.zip` file.
+
+3. **Run the game:**
+    - Ensure that a Java Runtime Environment (JRE) of at least version 23 is installed.
+    - Execute the JAR file to start the game:
+      ```sh
+      java -jar ColdCase.jar
+      ```
+
+## Building the Client Manually
+If you prefer to build the game from source, follow these steps:
+
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/under-the-oaks/ColdCase-Client.git
+   ```
+
+2. **Make Gradle wrapper executable:**
+   ```sh
+   chmod +x ./gradlew
+   ```
+
+3. **Build the release version:**
+   ```sh
+   ./gradlew release
+   ```
+   This will generate a `.zip` file containing the built game.
+
+4. **Install the built version:**
+    - Extract the generated `.zip` file in a suitable directory.
+    - Run the game using the JAR file as described in the quick installation.
+
+## Requirements
+- Java Runtime Environment (JRE) **version 23 or later**.
+- Sufficient disk space for installation and execution.
