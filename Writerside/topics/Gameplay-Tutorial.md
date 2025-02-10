@@ -1,3 +1,3 @@
-# Gameplay Tutorial
+# Getting Startet - Gameplay
 
 Start typing here...

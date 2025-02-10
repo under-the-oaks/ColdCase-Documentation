@@ -1,3 +1,3 @@
-# Map Generator
+# Tile
 
 Start typing here...

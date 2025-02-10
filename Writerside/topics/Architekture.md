@@ -1,3 +1,3 @@
-# Map Generator
+# Architekture
 
 Start typing here...

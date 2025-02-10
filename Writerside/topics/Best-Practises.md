@@ -1,5 +1,8 @@
 # Best Practices
 
+This is outlining the guidelines we as Under the Oaks set ourselves to follow when working on the project. This includes
+coding, documentation and working with git.
+
 ## Story duration - Actual
 
 After completing each issue it is mandatory to note your time spend on the issue. Use the "Actual" field of the issue
