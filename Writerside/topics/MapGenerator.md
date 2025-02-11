@@ -1,3 +1,3 @@
-# Map Generator
+# MapGenerator
 
 Start typing here...
