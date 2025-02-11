@@ -2,23 +2,23 @@
 
 ## Table of Contents
 
-1. [Introduction](#introduction)
-2. [System Overview](#system-overview)
-3. [Architecture](#architecture)
-    - 3.1 [Map](#map)
-    - 3.2 [Tile](#tile)
-    - 3.3 [TileContent](#tilecontent)
-    - 3.4 [GameController](#gamecontroller)
-    - 3.5 [InteractionChain](#interactionchain)
-    - 3.6 [GameStateUpdates (GSUs)](#gamestateupdates)
-    - 3.7 [Snapshot](#snapshot)
-4. [Interaction Flow](#interaction-flow)
-    - 4.1 [Local Interactions](#local-interactions)
-    - 4.2 [Transcendent (Remote) Interactions](#transcendent-remote-interactions)
-5. [Networking and Synchronization](#networking-and-synchronization)
-6. [Error Handling](#error-handling)
-7. [Performance Considerations](#performance-considerations)
-9. [Diagram](#diagram)
+1. [Introduction](#1-introduction)
+2. [System Overview](#2-system-overview)
+3. [Architecture](#3-architecture)
+    - 3.1 [Map](#3-1-map)
+    - 3.2 [Tile](#3-2-tile)
+    - 3.3 [TileContent](#3-3-tilecontent)
+    - 3.4 [GameController](#3-4-gamecontroller)
+    - 3.5 [InteractionChain](#3-5-interactionchain)
+    - 3.6 [GameStateUpdates (GSUs)](#3-6-gamestateupdates-gsus)
+    - 3.7 [Snapshot](#3-7-snapshot)
+4. [Interaction Flow](#4-interaction-flow)
+    - 4.1 [Local Interactions](#4-1-local-interactions)
+    - 4.2 [Transcendent (Remote) Interactions](#4-2-transcendent-remote-interactions)
+5. [Networking and Synchronization](#5-networking-and-synchronization)
+6. [Error Handling](#6-error-handling)
+7. [Performance Considerations](#7-performance-considerations)
+8. [Diagram](#8-diagram)
 
 ---
 
@@ -243,4 +243,5 @@ The system is optimized for responsiveness:
 
 ## 8. Diagram
 
-[INSERT UML DIAGRAM SHOWCASING GameController, InteractionChain, Snapshot, and their interactions]
+![GameController.svg](GameController.svg)
+
