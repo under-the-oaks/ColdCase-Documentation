@@ -13,6 +13,22 @@
         <toc-element topic="Time-Management.md"/>
     </toc-element>
     <toc-element toc-title="Specification">
+        <toc-element toc-title="Technical references">
+            <toc-element topic="Game-State-Architecture.md">
+                <toc-element topic="MapGenerator.md"/>
+                <toc-element topic="Map.md"/>
+                <toc-element topic="TileArray.md"/>
+                <toc-element topic="Tile.md"/>
+                <toc-element topic="TileContent.md"/>
+            </toc-element>
+            <toc-element topic="Architekture.md"/>
+            <toc-element toc-title="Server">
+                <toc-element topic="Overview.md"/>
+                <toc-element topic="Architecture.md"/>
+                <toc-element topic="TechnicalDetails-md.md"/>
+                <toc-element topic="ClientImplementation.md"/>
+            </toc-element>
+        </toc-element>
         <toc-element topic="Game-Design-Document.md"/>
         <toc-element topic="WIP-RAW-Interaction-System.md"/>
         <toc-element toc-title="Gameplay">
@@ -22,22 +38,6 @@
         <toc-element toc-title="Level Desing Planning"/>
         <toc-element toc-title="Art and Design Choices"/>
         <toc-element toc-title="Test Stratgy"/>
-    </toc-element>
-    <toc-element toc-title="Technical references">
-        <toc-element topic="Game-State-Architecture.md">
-            <toc-element topic="MapGenerator.md"/>
-            <toc-element topic="Map.md"/>
-            <toc-element topic="TileArray.md"/>
-            <toc-element topic="Tile.md"/>
-            <toc-element topic="TileContent.md"/>
-        </toc-element>
-        <toc-element topic="Architekture.md"/>
-        <toc-element toc-title="Server">
-            <toc-element topic="Overview.md"/>
-            <toc-element topic="Architecture.md"/>
-            <toc-element topic="TechnicalDetails-md.md"/>
-            <toc-element topic="ClientImplementation.md"/>
-        </toc-element>
     </toc-element>
     <toc-element toc-title="Tutorials">
         <toc-element toc-title="Installation Guides">
