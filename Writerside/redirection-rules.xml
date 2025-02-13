@@ -18,4 +18,12 @@
         <description>Created after removal of "Getting Started" from ColdCaseDocumentation</description>
         <accepts>Gameplay-Tutorial.html</accepts>
     </rule>
+    <rule id="63b4db1f">
+        <description>Created after removal of "Tile" from ColdCaseDocumentation</description>
+        <accepts>Tile.html</accepts>
+    </rule>
+    <rule id="1ba871d1">
+        <description>Created after removal of "Map Class" from ColdCaseDocumentation</description>
+        <accepts>Map.html</accepts>
+    </rule>
 </rules>

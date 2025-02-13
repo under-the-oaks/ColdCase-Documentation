@@ -137,6 +137,10 @@ Local interactions simulate and validate a player’s action within a deep-clone
     - **Action Simulation:**
         - The `action()` method of the identified TileContent is executed. This simulates the action (for example, moving an object or stepping onto a pressure plate) without altering the active game state.
 
+    <note>
+    <a href="Game-State-Object-Connections.md">Visit Game State Object Connection</a>
+    </note>
+
 4. **Cascading Updates and Stability Check:**
     - Many interactions cause additional updates (e.g., a pressure plate might trigger a door to open).
     - The system processes these subsequent effects by calling `update()` or `handleUpdate()` on the affected TileContents.

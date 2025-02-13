@@ -1,3 +1,0 @@
-# TileContent
-
-Start typing here...

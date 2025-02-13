@@ -1,3 +1,0 @@
-# Tile
-
-Start typing here...

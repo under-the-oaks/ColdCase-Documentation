@@ -1,4 +1,4 @@
-# Server-Client Architecture
+# Network Architecture
 
 ## Overview
 The system facilitates real-time communication between remote game clients using WebSockets. It enables interaction synchronization, game state updates, and event-driven messaging.
@@ -26,7 +26,7 @@ The server acts as a message relay and Lobby/Session manager.
 - create and manages session/Lobbys
 
 
-## Communication Flow in an Lobby
+## Communication Flow in a Lobby
 
 ![architecktur.md](architecktur.md)
 
