@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 env:
-  INSTANCE: 'ColdCaseDocumentation/ccd'
+  INSTANCE: 'Writerside/ccd'
   DOCKER_VERSION: '243.22562'
 
 jobs:
