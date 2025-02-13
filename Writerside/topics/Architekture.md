@@ -1,4 +1,4 @@
-# Architecture
+# Server-Client Architecture
 
 ## Overview
 The system facilitates real-time communication between remote game clients using WebSockets. It enables interaction synchronization, game state updates, and event-driven messaging.
