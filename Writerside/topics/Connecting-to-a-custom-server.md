@@ -7,8 +7,6 @@ By default, **ColdCase** connects to its official server without requiring any c
 3. Locate the following line:
 
    ```properties
-   # ColdCase Client Configuration
-
    # Server address (exclude 'ws://')
    websocket_url=12.345.67.890:8081
    ```
