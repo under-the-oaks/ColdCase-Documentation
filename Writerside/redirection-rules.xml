@@ -10,4 +10,8 @@
         <description>Created after removal of "Overview" from ColdCase Documentation</description>
         <accepts>Overview.html</accepts>
     </rule>
+    <rule id="9207cdc">
+        <description>Created after removal of "TileArray" from ColdCaseDocumentation</description>
+        <accepts>TileArray.html</accepts>
+    </rule>
 </rules>

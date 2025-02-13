@@ -14,10 +14,9 @@
     </toc-element>
     <toc-element toc-title="Specification">
         <toc-element toc-title="Technical references">
-            <toc-element topic="Game-State-Architecture.md">
+            <toc-element topic="Game-State-Architecture.md" accepts-web-file-names-ref="9207cdc">
                 <toc-element topic="MapGenerator.md"/>
                 <toc-element topic="Map.md"/>
-                <toc-element topic="TileArray.md"/>
                 <toc-element topic="Tile.md"/>
                 <toc-element topic="TileContent.md"/>
             </toc-element>
