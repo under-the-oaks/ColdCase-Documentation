@@ -192,9 +192,9 @@ Transcendent interactions extend the local interaction process to actions that a
 - **Remote Trigger:**  
   `public Queue<Interaction> triggerAction(Interaction interaction, boolean suppressTranscendentFollowUp)`
 
----
+![GameController.svg](GameController.svg)
 
-[INSERT UML DIAGRAM SHOWCASING GameController, InteractionChain, and Snapshot interactions]
+---
 
 ## 5. Networking and Synchronization
 
@@ -243,5 +243,5 @@ The system is optimized for responsiveness:
 
 ## 8. Diagram
 
-![GameController.svg](GameController.svg)
+TODO UML-KLASSENDIAGRAM (LIEGT AUF PC ZUHAUSE)
 
