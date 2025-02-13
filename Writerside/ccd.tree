@@ -42,6 +42,7 @@
             <toc-element topic="Server-Installation.md"/>
             <toc-element topic="Client-Installation.md"/>
         </toc-element>
+        <toc-element topic="Connecting-to-a-custom-server.md"/>
+        <toc-element topic="Gameplay.md"/>
     </toc-element>
-    <toc-element topic="Gameplay.md"/>
 </instance-profile>

@@ -18,7 +18,7 @@ To install the ColdCase client, follow these steps:
 3. **Run the game:**
     - Execute the JAR file to start the game:
       ```sh
-      java -jar ColdCase.jar
+      java -jar Cold\ Case-*.jar
       ```
 
 ## Building the Client Manually
@@ -39,7 +39,7 @@ If you prefer to build the game from source, follow these steps:
    ```sh
    ./gradlew release
    ```
-   This will generate a `.zip` file containing the built game.
+   This will generate a `.zip` file containing the built game that can be found under `lwjgl3/build/release/`
 
 4. **Install the built version:**
     - Extract the generated `.zip` file in a suitable directory.
