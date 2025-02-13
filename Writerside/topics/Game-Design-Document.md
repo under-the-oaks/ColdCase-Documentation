@@ -1,5 +1,9 @@
 # Game Design Document
 
+This document was created at the beginning of the project to outline the game concept, design, and development plan. It
+served as an early reference board and idea collection for the project. This entails that there might be inaccuracies in
+the document, as the project progressed and the game design evolved.
+
 ## Concept
 
 ### Working title
@@ -15,10 +19,6 @@ and a ghost cooperate with their different abilities across their different worl
 
 puzzle, isometric 2D, Adventure
 → Adventure Coop Puzzle Game
-
-### Unique Selling points
-
-<!-- Critically important. What makes your game stand out? How is it different from all other games? -->
 
 ## Product Design
 
@@ -49,7 +49,10 @@ concept art or reference art can you show to give the feel of the game? -->
 #### Inspiration
 
 - visual: [monogon-isometricdungeon asset pack](https://maxparata.itch.io/monogon-isometricdungeon)
-- Gameplay: [Keep talking and nobody explodes](https://keeptalkinggame.com/)
+- Gameplay:
+    - [Keep talking and nobody explodes](https://keeptalkinggame.com/)
+    - [We were here](https://store.steampowered.com/app/582500/We_Were_Here/) and following titles of the same series
+    - [BOKURA](https://store.steampowered.com/app/1801110/BOKURA/)
 
 ### Game World Fiction
 
@@ -122,9 +125,9 @@ player interact with? -->
 - Solid Player Movement based on an isometric Grid System
 - Player Inventory
 - Portals to transfer Items between the gameworlds of both players
-- 2 States an Object can have: 
-  - normal - the object is only in the world it appears in
-  - transcended - the object exsits and acts in both worlds the same
+- 2 States an Object can have:
+    - normal - the object is only in the world it appears in
+    - transcended - the object exsits and acts in both worlds the same
 - Asynchronous (Multiplayer) Gameplay
 
 #### Level Specific
@@ -132,10 +135,12 @@ player interact with? -->
 (living/ghostly)
 
 ##### mvp:
+
 - gloves to push blocks and to toggle levers
 - spikes that block the path of the player and get toggled by a lever
 
 ##### later:
+
 - miasma/fog unpassable for the player + torch to detect or remove miasma/fog
 
 ## Interactivity
