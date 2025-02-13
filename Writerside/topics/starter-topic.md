@@ -14,29 +14,29 @@ mysterious environment.
 
 ## Contributors:
 
-Daniel Mayer
+Danmyrer
 : Role: Technical Lead
-: Contact: [GitHub]( ... ), [Email]( ... )
+: Contact: [GitHub]( https://github.com/Danmyrer )
 
-Yassine Ouhmid    
+Yassine091   
 : Role: Documentation Manager
-: Contact: [GitHub]( ... ), [Email]( ... )
+: Contact: [GitHub]( https://github.com/Yassine091 )
 
-Max Becker
+MaxRBecker
 : Role: Scrum Master
-: Contact: [GitHub](https://github.com/MaxRBecker), [Email](mailto:Max.Becker@student.hs-rm.de)
+: Contact: [GitHub](https://github.com/MaxRBecker)
 
-Toni Bingenheimer
+Toninskyy
 : Role: QA Engineer
-: Contact: [GitHub]( ... ), [Email]( ... )
+: Contact: [GitHub]( https://github.com/Toninskyy )
 
-Jonathan Christe
+JoniBFB
 : Role: Art & UI/UX Designer
-: Contact: [GitHub]( ... ), [Email]( ... )
+: Contact: [GitHub]( https://github.com/JoniBFB )
 
-Jean-Luc Wenserski
+jean874
 : Role: Backend Lead Developer
-: Contact: [GitHub]( ... ), [Email]( ... )
+: Contact: [GitHub]( https://github.com/jean874 )
 
 <note>
     It is important to note that despite the roles assigned to each contributor, 
