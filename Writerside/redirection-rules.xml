@@ -10,4 +10,8 @@
         <description>Created after removal of "Overview" from ColdCase Documentation</description>
         <accepts>Overview.html</accepts>
     </rule>
+    <rule id="2a7b1e30">
+        <description>Created after removal of "Getting Started" from ColdCaseDocumentation</description>
+        <accepts>Gameplay-Tutorial.html</accepts>
+    </rule>
 </rules>

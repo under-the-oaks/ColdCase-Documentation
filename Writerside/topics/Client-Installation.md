@@ -1,4 +1,4 @@
-# ColdCase Client Installation and Build Guide
+# Client Installation
 
 <warning>
     The game requires a Java Runtime Environment (JRE) of at least version 23 and sufficient disk space to run.

@@ -12,6 +12,14 @@ offering crucial insights necessary to tackle the challenges ahead.
 Players must work together strategically to uncover clues and reveal the secrets hidden within this captivating and
 mysterious environment.
 
+## Getting Started
+
+1. Set up the Server » [](Server-Installation.md)
+2. Install the Client » [](Client-Installation.md)
+3. Team up with a friend
+4. Learn how to play » [](Gameplay.md)
+5. Have fun!
+
 ## Contributors:
 
 Danmyrer
