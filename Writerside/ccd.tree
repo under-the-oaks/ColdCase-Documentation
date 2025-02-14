@@ -38,6 +38,7 @@
     <toc-element topic="LevelManager-md.md"/>
     <toc-element topic="LevelsEnum-md.md"/>
     <toc-element toc-title="Tutorials">
+        <toc-element topic="Howto-Create-and-Integrate-a-new-level.md"/>
         <toc-element toc-title="Installation Guides">
             <toc-element topic="Server-Installation.md"/>
             <toc-element topic="Game-Instructions.md"/>
