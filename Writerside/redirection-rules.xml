@@ -26,4 +26,20 @@
         <description>Created after removal of "Map Class" from ColdCaseDocumentation</description>
         <accepts>Map.html</accepts>
     </rule>
+    <rule id="1ec049d0">
+        <description>Created after removal of "Game Instructions" from ColdCaseDocumentation</description>
+        <accepts>Game-Instructions.html</accepts>
+    </rule>
+    <rule id="1aa1bf96">
+        <description>Created after removal of "Game Instructions" from ColdCaseDocumentation</description>
+        <accepts>Game-Instructions.html</accepts>
+    </rule>
+    <rule id="14258961">
+        <description>Created after removal of "Level design plan" from ColdCaseDocumentation</description>
+        <accepts>Level-design-plan.html</accepts>
+    </rule>
+    <rule id="1547c5d5">
+        <description>Created after removal of "Topic title" from ColdCaseDocumentation</description>
+        <accepts>Gameplay.html</accepts>
+    </rule>
 </rules>
