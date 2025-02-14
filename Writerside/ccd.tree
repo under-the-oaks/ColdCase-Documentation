@@ -33,6 +33,8 @@
         <toc-element toc-title="Art and Design Choices"/>
         <toc-element topic="Quality-Assurance.md"/>
     </toc-element>
+    <toc-element topic="LevelManager-md.md"/>
+    <toc-element topic="LevelsEnum-md.md"/>
     <toc-element toc-title="Tutorials">
         <toc-element toc-title="Installation Guides">
             <toc-element topic="Server-Installation.md"/>
