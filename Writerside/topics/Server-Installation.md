@@ -21,7 +21,7 @@ Clone the GitHub repository to your local machine using Git. Replace the reposit
 - `git clone https://github.com/under-the-oaks/ColdCase-Server`
 - `cd ColdCase-Server`
 
-Running the Server Locally
+## Running the Server Locally
 To start the server locally, use the following command:
 
 - `cd server`
