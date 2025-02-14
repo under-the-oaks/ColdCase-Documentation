@@ -31,7 +31,7 @@
         </toc-element>
         <toc-element toc-title="Level Desing Planning"/>
         <toc-element toc-title="Art and Design Choices"/>
-        <toc-element toc-title="Test Stratgy"/>
+        <toc-element topic="Quality-Assurance.md"/>
     </toc-element>
     <toc-element toc-title="Tutorials">
         <toc-element toc-title="Installation Guides">
