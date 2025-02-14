@@ -42,8 +42,8 @@
             </toc-element>
         </toc-element>
         <toc-element toc-title="Quality Assurance">
-            <toc-element topic="CI-CD.md"/>
             <toc-element topic="Quality-Assurance.md"/>
+            <toc-element topic="CI-CD.md"/>
         </toc-element>
     </toc-element>
     <toc-element toc-title="Tutorials">
