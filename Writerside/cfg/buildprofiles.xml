@@ -5,6 +5,7 @@
 
     <variables>
         <custom-favicons>cclogo.png</custom-favicons>
+        <header-logo>cclogo.png</header-logo>
     </variables>
     <build-profile instance="ccd">
         <variables>
