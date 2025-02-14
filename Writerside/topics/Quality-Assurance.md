@@ -4,7 +4,7 @@ Our test strategy for **Coldcase** is designed to ensure a robust, maintainable 
 
 ## Testing the Game Client
 
-The client is built with LibGDX, and we use JUnit to run tests in a headless environment. Our unit tests are designed to mimic real-world use cases (a grey-box approach), ensuring that the components work correctly while isolating dependencies with mocks. Although achieving high coverage is important, our tests are primarily focused on verifying practical scenarios.
+The client is built with LibGDX, and we use JUnit to run tests in a headless environment. Our unit tests are designed to mimic real-world use cases (a grey-box approach) such as user-interactions (e.g. moving a block), ensuring that the components work correctly while isolating dependencies with mocks. Although achieving high coverage is important, our tests are primarily focused on verifying practical scenarios.
 
 ## Testing the Game Server
 
