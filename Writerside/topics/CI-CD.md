@@ -1,13 +1,25 @@
 # Continuous Integration (CI) Pipeline
 
-We automate the process of building, testing, and analyzing code for the ColdCase-Client through a pipeline that uses
-GitHub actions to run. It ensures that every push to the `development` branch and every pull request triggers a
-structured verification process.
+The CI pipeline for the **ColdCase-Client** automates the processes of building, testing, and analyzing code. It is implemented using **GitHub Actions** and is triggered by:
 
-Note that you will notice when inspecting the .yml files in the Client and
-Documentation repositories that there are additional pipelines. These are for generating and publishing the
-documentation. The pipeline for the documentation repo builds the writerside documentation and publishes it directly to
-GitHub pages. The extra pipeline in the client repo is for building the javadoc and also publishing it to GitHub pages.
+- Every push to the `development` branch
+- Every pull request
+
+This ensures that all changes undergo a structured verification process before integration.
+
+## Additional Pipelines
+
+In the **Client** and **Documentation** repositories, you will find additional `.yml` files defining separate pipelines:
+
+- **Documentation Repository:**
+    - Builds the **writerside** documentation
+    - Publishes it directly to **GitHub Pages**
+
+- **Client Repository:**
+    - Builds the **Javadoc**
+    - Publishes it to **GitHub Pages**
+
+These pipelines ensure that both the documentation and code-related resources are automatically generated and deployed.
 
 ## ColdCase-Client CI Pipeline
 
@@ -97,7 +109,25 @@ and development branches, as well as for all pull requests.
 The pipeline starts by checking out the repository to ensure the latest code is available. It then sets up Deno using
 the official action.
 
+```yaml
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v2.x
+
+      - name: Install dependencies
+        run: deno cache ./server/main.ts
+```
+
 Once Deno is installed, it preloads dependencies by caching the modules referenced in `server/main.ts`, which helps
 speed up subsequent builds. Finally, the pipeline executes the test suite using `deno test --allow-net`, allowing tests
 that require network access to run. This ensures that the project’s functionality is validated before changes are merged
 into the main or development branches.
+
+```yaml
+      - name: Run tests
+        run: deno test --allow-net
+```
