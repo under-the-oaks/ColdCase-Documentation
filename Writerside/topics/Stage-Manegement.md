@@ -53,9 +53,8 @@ menu as separate actors (
 [MapActor](https://under-the-oaks.github.io/ColdCase-Client/tech/underoaks/coldcase/stages/actors/MapActor.html),
 [InventoryActor](https://under-the-oaks.github.io/ColdCase-Client/tech/underoaks/coldcase/stages/actors/InventoryActor.html),
 [PauseMenu](https://under-the-oaks.github.io/ColdCase-Client/tech/underoaks/coldcase/stages/actors/PauseMenu.html)).
-These actors initiate there respective UI and Game elements - the map, the inventory, and the pause menu. It also
-contains the fixed update method, which triggers every 0.1 seconds. This method is used to apply the next
-pending game state update.
+These actors initiate there respective UI and Game elements - the map, the inventory, and the pause menu. The MapActor
+gets the correct level it is supposed to load from the [](LevelManager-md.md).
 
 The `MainMenuStage` class is the class responsible for the main menu. It initializes the main menu buttons and their
 click listeners. The buttons are created using the LibGDX Scene2D UI system. The main menu buttons are Host, Join,
