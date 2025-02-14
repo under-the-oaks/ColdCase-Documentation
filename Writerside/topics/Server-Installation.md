@@ -1,6 +1,8 @@
 # Server Installation
 
-This document provides step-by-step instructions for installing and running the COLD CASE Game Server, which is hosted on GitHub. It covers the prerequisites, installation steps, running the server locally, and deployment considerations.
+This document provides step-by-step instructions for installing and running the 
+COLD CASE Game Server. It covers the prerequisites, installation steps and running the 
+server locally.
 
 
 ## Prerequisites
@@ -23,7 +25,7 @@ Running the Server Locally
 To start the server locally, use the following command:
 
 - `cd .\server\`
-- `deno run --allow-net --allow-read server.ts`
+- `deno run --allow-net --allow-read main.ts`
 
 After the server starts, you should see output indicating that it is listening on port 8080.
 
