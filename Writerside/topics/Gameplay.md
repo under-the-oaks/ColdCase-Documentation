@@ -1,3 +1,0 @@
-# Gameplay
-
-Start typing here...
