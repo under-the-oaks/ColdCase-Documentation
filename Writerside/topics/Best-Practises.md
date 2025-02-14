@@ -1,13 +1,12 @@
 # Best Practices
 
-This is outlining the guidelines we as Under the Oaks set ourselves to follow when working on the project. This includes
-coding, documentation and working with git.
+This document outlines the guidelines that we, as Under the Oaks, have set for ourselves to follow when working on the project.
+This includes coding, documentation, and working with Git.
 
 ## Story duration - Actual
 
-After completing each issue it is mandatory to note your time spend on the issue. Use the "Actual" field of the issue
-itself. The time you spend working on the issue is rounded up to the next full hour -> 1h20min is going to be recorded
-as 2h
+After completing each issue, it is mandatory to note the time spent on it. Use the "Actual" field of the issue
+itself. The time you spend working on the issue is rounded up to the next full hour; for example, 1 hour and 20 minutes is recorded as 2 hours.
 
 ![example image actual field in issue](image.png)
 
@@ -15,7 +14,7 @@ as 2h
 
 ### New branch
 
-If the issue requires changes to the repository you create a new branch for the issue. Such a branch is called a feature
+If an issue requires changes to the repository, you must create a new branch for it. Such a branch is called a feature
 or bug branch, depending on the type of issue.
 
 This can be done from the issue (see image below), which links the new branch to the issue automatically. Alternatively,
@@ -27,12 +26,12 @@ this can be done manually by clicking on the cog icon next to the "Development" 
 
 #### Naming convention for feature branch
 
-Feature branch name as follows "NR-issue-name-in-kebap-case".  
+The feature branch should be named as follows: "NR-issue-name-in-kebap-case".  
 Bsp.: 9-update-feature-branch-naming-convention
 
 ### Commenting your Implementation
 
-Anotate your Classes and Methods with JavaDoc!
+Annotate your classes and methods with JavaDoc.
 
 #### Classes
 
@@ -73,11 +72,10 @@ public void updateUntilStable(InteractionChain chain) throws GameStateUpdateExce
 
 ### Testing your Implementation
 
-Befor creating your PR you should always write new or update existing tests for your code changes. Code Coverage has to
+Before creating your PR, you should always write new tests or update existing ones for your code changes. Code Coverage has to
 be above 80% for files you changed!
 
-To create an Overview about the the different logcal paths of your implementation you should always document the
-edgecases to test in the JavaDoc of the Method:
+To create an overview of the different logical paths in your implementation, you should always document the edge cases to test in the JavaDoc of the method.
 
 ```java
 /**
@@ -91,31 +89,30 @@ edgecases to test in the JavaDoc of the Method:
 
 ### Coding best practices
 
-- if you work with InteliJ Idea regularly press `Strg + Alt + L` to reformat your file
+- If you work with IntelliJ IDEA, regularly press `Strg + Alt + L` to reformat your file.
 
 ---
 
 ### Commit Messages
 
-Commit message name as follows "NR short summary of your changes".  
-Bsp.: "9 changed naming conventio to kabab case for issue branches"
+The commit message should follow this format: "NR short summary of your changes."
+Example: "9 changed naming convention to kebab case for issue branches."
 
 
 ---
 
 ### Pushing to development
 
-After compleating the issue:
+After completing the issue:
 
-1. create and resolve a pull-request from from development branch to your feature branch (this is to prevent merge
-   conflicts on development)
-2. create a pull-request from from development branch to main branch
+1. Create and resolve a pull request from the development branch to your feature branch (this prevents merge conflicts on development).
+2. Create a pull-request from development branch to main branch
 3. 2 or more coworkers have to approve the pull-request
-4. merge the pull-request
+4. Merge the pull-request
 
 ### Pushing to main
 
-1. create a pull-request from from development branch to main branch
+1. Create a pull-request from development branch to main branch
 2. 2 or more coworkers have to approve the pull-request
-3. merge the pull-request
+3. Merge the pull-request
 

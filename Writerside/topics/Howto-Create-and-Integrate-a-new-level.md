@@ -5,7 +5,7 @@ properly recognized and loaded in the correct order.
 
 ## 1. Create a New Folder
 
-Inside the projects `assets/maps` folder, create a new folder following the naming convention:
+Inside the project's `assets/maps` folder, create a new folder following the naming convention:
 
 ```
 Map_<map-name>
@@ -29,11 +29,11 @@ These files will define the level structure from the perspective of the **detect
 Edit both `map.detective` and `map.ghost` according to the map formatting guidelines provided by
 the [MapGenerator](MapGenerator.md#reading-and-splitting-the-map-file).
 
-Fill it with the desired level layout using the available Tiles and TileContents. For reference, see:
+Fill them with the desired level layout using the available Tiles and TileContents. For reference, see:
 - [Available Tiles](Tiles.md#implementation-note)
 - [Available TileContents](TileContents.md#implementation-note)
 
-An example of a simple level layout could be:
+An example of a simple level layout is:
 
 ```
 5 5
@@ -54,7 +54,7 @@ An example of a simple level layout could be:
 
 ## 4. Register the Level in `Levels.java`
 
-To make the game recognize your new level, open the file:
+To ensure the game recognizes your new level, open the file:
 
 ```
 tech/underoaks/coldcase/game/Levels.java
@@ -72,10 +72,10 @@ For example, if the new level is the 8th level added and the map path is `maps/M
 LEVEL_08("maps/Map_NewTutorial"),
 ```  
 
-The order of levels in the `Levels` enum determines how they load in a new playthrough. The first level listed (
+The order of levels in the `Levels` enum determines their loading sequence in a new play through. The first level listed (
 Levels.values()[0]) is the one that loads first when starting a new game.
 
 ## Final Steps
 
 After completing these steps, ensure that your level files are correctly formatted, and that the `Levels.java` file
-compiles without errors. Your new level should now be integrated and ready for playing!
+compiles without errors. Your new level should now be integrated and ready to play!

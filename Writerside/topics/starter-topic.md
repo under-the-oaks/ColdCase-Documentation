@@ -13,7 +13,7 @@ Players must work together strategically to uncover clues and reveal the secrets
 mysterious environment.
 
 <note>
-A more technical documentation is provided in form of Javadoc <a href="https://under-the-oaks.github.io/ColdCase-Client/index.html">here</a>.
+A more technical documentation is provided in the form of Javadoc <a href="https://under-the-oaks.github.io/ColdCase-Client/index.html">here</a>.
 </note>
 
 ## Getting Started
@@ -52,8 +52,5 @@ jean874
 : Contact: [GitHub]( https://github.com/jean874 )
 
 <note>
-    It is important to note that despite the roles assigned to each contributor, 
-    everyone put extensive time and effort into the coding part of the project. 
-    The roles were assigned to ensure that the project was completed in a timely manner
-    and that all aspects of the project were covered.
+    It is important to note that, despite the roles assigned to each contributor, everyone devoted extensive time and effort to the coding aspect of the project.
 </note>
