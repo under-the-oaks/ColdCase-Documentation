@@ -1,19 +1,18 @@
 # Game State Architecture
 
 Our game world is divided into a grid of tiles. Each tile can contain an object, which we call a [
-`TileContent`](TileContent.md). The [`TileContent`](TileContent.md) is a base class that all entities in the game
+`TileContent`](TileContents.md). The [`TileContent`](TileContents.md) is a base class that all entities in the game
 world inherit from. A list of all `TileContent`'s can be found [here](TileContents.md). This document will explain how
 the game state, containing all the [`TileContent`](TileContents.md) objects, is managed and updated.
 
 ## Game State
 
-The game state is held in a 2D array of type`tile`, called the [`TileArray`](TileArray.md).
-Each `tile` can contain one [`TileContent`](TileContents.md) object. Each [
-`TileContent`](TileContents.md) can contain another Instance of [`TileContent`](TileContents.md), allowing for multiple
-objects on one tile.
-This achieves a hierarchical structure of the game world.
+The game state is held in a 2D array of type [`tile`](Tiles.md), called the [`TileArray`](Game-State-Architecture.md).
+Each [`tile`](Tiles.md) can contain one [`TileContent`](TileContents.md) object. Each
+[`TileContent`](TileContents.md) can contain another Instance of [`TileContent`](TileContents.md), allowing for multiple
+objects on one tile. This achieves a hierarchical structure of the game world.
 
-Accessed is this `TileArray` over the [`Map`](Map.md) class, as shown in the class diagram below.
+Accessed is this `TileArray` over the [`Map`](Game-State-Architecture.md) class, as shown in the class diagram below.
 
 ![ColdCaseMapClassDiagramm-Page-1.drawio.svg](ColdCaseMapClassDiagramm-Page-1.drawio.svg)
 

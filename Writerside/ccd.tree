@@ -30,9 +30,11 @@
             <toc-element topic="Tiles.md"/>
             <toc-element topic="TileContents.md"/>
         </toc-element>
+        <toc-element topic="Player.md"/>
         <toc-element toc-title="Art and Design Choices"/>
         <toc-element topic="Quality-Assurance.md"/>
     </toc-element>
+    <toc-element topic="Stage-Manegement.md"/>
     <toc-element toc-title="Tutorials">
         <toc-element toc-title="Installation Guides">
             <toc-element topic="Server-Installation.md"/>
