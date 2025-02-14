@@ -12,13 +12,18 @@ offering crucial insights necessary to tackle the challenges ahead.
 Players must work together strategically to uncover clues and reveal the secrets hidden within this captivating and
 mysterious environment.
 
+<note>
+A more technical documentation is provided in form of Javadoc <a href="https://under-the-oaks.github.io/ColdCase-Client/index.html">here</a>.
+</note>
+
 ## Getting Started
 
 1. Set up the Server » [](Server-Installation.md)
 2. Install the Client » [](Client-Installation.md)
 3. Team up with a friend
-4. Learn how to play » [](Gameplay.md)
+4. Learn how to play » [](Game-Instructions.md)
 5. Have fun!
+
 
 ## Contributors:
 

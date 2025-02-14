@@ -20,6 +20,10 @@ over them. When the Spikes are inactive, the player can walk over them.
 For this duo to work, the Trigger must be placed on the same tile as the Spikes. And the Player interacting has to have
 the Glove item equipped.
 
+<warning>
+In the Implementation the Door and Door_Trigger are used as the Spikes and Trigger.
+</warning>
+
 ### Goal
 
 The Goal is the TileContent that the player has to reach to finish the level. For the Goal to be interactable both
@@ -57,3 +61,24 @@ MovableBlock can be pushed into the Hole, making it disappear from the game worl
     Transcendent MovableBlocks can be pushed into a Hole in one game world making it disappear in one and logically
     transform into a wall in the other game world.
 </note>
+
+## Implementation Note
+
+The TileContents are represented by an enum, which allows for easy access to the different TileContent types. Each Tile
+Content Type contains an index and a reference to the TileContent class. The index is used to identify the TileContent
+type when reading map data from a file.
+
+| Tile Content                 | Index | Tile Content Class                                                                                                                                   |
+|------------------------------|-------|------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Wall                         | 1     | [Wall](https://under-the-oaks.github.io/ColdCase-Client/tech/underoaks/coldcase/state/tileContent/Wall.html)                                         |
+| Player                       | 3     | [Player](https://under-the-oaks.github.io/ColdCase-Client/tech/underoaks/coldcase/state/tileContent/Player.html)                                     |
+| MovableBlock                 | 4     | [MovableBlock](https://under-the-oaks.github.io/ColdCase-Client/tech/underoaks/coldcase/state/tileContent/MovableBlock.html)                         |
+| InvisibleWall                | 7     | [InvisibleWall](https://under-the-oaks.github.io/ColdCase-Client/tech/underoaks/coldcase/state/tileContent/InvisibleWall.html)                       |
+| GloveItem                    | 8     | [GloveItem](https://under-the-oaks.github.io/ColdCase-Client/tech/underoaks/coldcase/state/tileContent/GloveItem.html)                               |
+| GoalObject                   | 9     | [GoalObject](https://under-the-oaks.github.io/ColdCase-Client/tech/underoaks/coldcase/state/tileContent/GoalObject.html)                             |
+| MovableBlockTranscendent     | 10    | [MovableBlockTranscendent](https://under-the-oaks.github.io/ColdCase-Client/tech/underoaks/coldcase/state/tileContent/MovableBlockTranscendent.html) |
+| Door (Spike)                 | 12    | [Door](https://under-the-oaks.github.io/ColdCase-Client/tech/underoaks/coldcase/state/tileContent/Door.html)                                         |
+| Door_Trigger (Spike_Trigger) | 13    | [Door_Trigger](https://under-the-oaks.github.io/ColdCase-Client/tech/underoaks/coldcase/state/tileContent/Door_Trigger.html)                         |
+| Hole                         | 14    | [Hole](https://under-the-oaks.github.io/ColdCase-Client/tech/underoaks/coldcase/state/tileContent/Hole.html)                                         |
+| PortalObject                 | 15    | [PortalObject](https://under-the-oaks.github.io/ColdCase-Client/tech/underoaks/coldcase/state/tileContent/PortalObject.html)                         |
+    

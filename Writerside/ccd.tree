@@ -30,13 +30,18 @@
             <toc-element topic="Tiles.md"/>
             <toc-element topic="TileContents.md"/>
         </toc-element>
+        <toc-element topic="Player.md"/>
         <toc-element toc-title="Art and Design Choices"/>
         <toc-element topic="Quality-Assurance.md"/>
     </toc-element>
+    <toc-element topic="Stage-Manegement.md"/>
+    <toc-element topic="LevelManager-md.md"/>
+    <toc-element topic="LevelsEnum-md.md"/>
     <toc-element toc-title="Tutorials">
+        <toc-element topic="Game-Instructions.md"/>
+        <toc-element topic="Howto-Create-and-Integrate-a-new-level.md"/>
         <toc-element toc-title="Installation Guides">
             <toc-element topic="Server-Installation.md"/>
-            <toc-element topic="Game-Instructions.md"/>
             <toc-element topic="Client-Installation.md"/>
         </toc-element>
         <toc-element topic="Connecting-to-a-custom-server.md"/>
