@@ -1,7 +1,7 @@
 # Client Installation
 
 <warning>
-    The game requires a Java Runtime Environment (JRE) of at least version 23 and sufficient disk space to run.
+    The game requires a Java Runtime Environment (JRE) of at least version 21 and sufficient disk space to run.
 </warning>
 
 ## Quick Installation
