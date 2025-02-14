@@ -1,4 +1,4 @@
-# Howto: Create and Integrate a New Level
+# Create and Integrate a New Level
 
 This guide explains how to create and integrate a new level into the game. Follow the steps below to ensure the level is
 properly recognized and loaded in the correct order.

@@ -7,9 +7,10 @@ and how they interact with each other.
 
 ## Types of TileContents
 
-### Wall
+### Wall & InvisibleWall
 
 A Wall is a TileContent that blocks the path of the player. The player cannot walk through a Wall, or interact with it.
+The Wall also has an invisible counterpart.
 
 ### Spikes & Triggers
 
@@ -17,8 +18,8 @@ These are two different TileContents that interact with each other. When a playe
 Spikes will toggle between being active and inactive. When the Spikes are active, the player will not be able to walk
 over them. When the Spikes are inactive, the player can walk over them.
 
-For this duo to work, the Trigger must be placed on the same tile as the Spikes. And the Player interacting has to have
-the Glove item equipped.
+For this duo to work, the Trigger and the Spikes must be placed at the same coordinate in both worlds and the Player
+interacting has to have the Glove item equipped.
 
 <warning>
 In the Implementation the Door and Door_Trigger are used as the Spikes and Trigger.
@@ -40,7 +41,7 @@ TileContents such as the MovableBlock.
 |-------|---------------------------------------------------------------|-----------------------|
 | Glove | Allows the player to interact with different physical objects | Trigger, MovableBlock |
 
-### MovableBlock
+### MovableBlock & MovableBlockTranscendent
 
 The MovableBlock is a TileContent that can be pushed by the player. The player can push the MovableBlock in any
 direction depending on the direction the player is facing when interacting with the block. Interactions between the
@@ -61,6 +62,17 @@ MovableBlock can be pushed into the Hole, making it disappear from the game worl
     Transcendent MovableBlocks can be pushed into a Hole in one game world making it disappear in one and logically
     transform into a wall in the other game world.
 </note>
+
+### Player
+
+This TileContent represents the player. When interacted with it moves in a specified direction. This interaction is
+controlled through the [`PlayerController`](Player.md).
+
+### PortalObject
+
+The PortalObject is a TileContent allowing the players to exchange items between their worlds. A player with an item
+equipped can interact with this TileContent to send the item to the other player. For this to work in the game, there
+has top be a PortalObject in both worlds at the same coordinates.
 
 ## Implementation Note
 
