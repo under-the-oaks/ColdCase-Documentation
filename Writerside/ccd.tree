@@ -10,7 +10,6 @@
     <toc-element toc-title="Organization">
         <toc-element topic="Code-Authoring.md"/>
         <toc-element topic="Best-Practises.md"/>
-        <toc-element topic="Time-Management.md"/>
     </toc-element>
     <toc-element toc-title="Specification">
         <toc-element toc-title="Gameplay and Design Choices">
