@@ -1,4 +1,4 @@
-# Continuous Integration (CI) Pipeline
+# Continuous Integration
 
 The CI pipeline for the **ColdCase-Client** automates the processes of building, testing, and analyzing code. It is implemented using **GitHub Actions** and is triggered by:
 
