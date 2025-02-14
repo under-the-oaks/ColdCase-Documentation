@@ -40,7 +40,7 @@ Therefore, rather than placing these acknowledgments in the source code, we have
 
 <table>
 <tr><td>Reference</td><td>Authors</td><td>Co-Authors</td></tr>
-<tr><td><code>tech.underoaks.coldcase.game.Direction</code></td><td>D</td><td>M, B</td></tr>
+<tr><td><code>tech.underoaks.coldcase.game.Direction</code></td><td>D</td><td>M</td></tr>
 <tr><td><code>tech.underoaks.coldcase.game.GameController</code></td><td>D</td><td>JL, M</td></tr>
 <tr><td><code>tech.underoaks.coldcase.game.Interaction</code></td><td>M</td><td>D</td></tr>
 <tr><td><code>tech.underoaks.coldcase.game.LevelManager</code></td><td>JL</td><td>M</td></tr>
