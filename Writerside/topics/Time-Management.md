@@ -1,3 +1,0 @@
-# Time Management
-
-Start typing here...
