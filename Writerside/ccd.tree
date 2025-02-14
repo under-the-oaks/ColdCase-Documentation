@@ -15,7 +15,11 @@
     <toc-element toc-title="Specification">
         <toc-element toc-title="Gameplay and Design Choices">
             <toc-element topic="Level-Design-Plan.md"/>
-            <toc-element toc-title="Art and Design Choices"/>
+            <toc-element toc-title="Art and Design Choices">
+                <toc-element topic="Style-Idea.md"/>
+                <toc-element topic="Sprites.md"/>
+                <toc-element topic="Empty-MD-Topic.md"/>
+            </toc-element>
             <toc-element toc-title="Gameplay">
                 <toc-element topic="Player.md"/>
                 <toc-element topic="Tiles.md"/>
