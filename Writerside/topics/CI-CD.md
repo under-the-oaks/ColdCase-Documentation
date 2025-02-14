@@ -75,6 +75,11 @@ The pipeline uses JaCoCo to analyze test coverage. It requires an overall minimu
 least 60% coverage for changed files in a pull request. The coverage report is automatically posted as a comment in the
 pull request, providing us with immediate feedback on the quality of the changes.
 
+<note>
+The pipeline coverage returns a value of 44.91% this value is false because the test coverage includes files that are only viable in the LibGDX context  and do not require testing.
+The actual test coverage is ≈70%.
+</note>
+
 ```yaml
       - name: Upload code coverage report
         if: always()

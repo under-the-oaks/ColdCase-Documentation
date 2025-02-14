@@ -20,6 +20,10 @@ To install the ColdCase client, follow these steps:
       ```sh
       java -jar Cold\ Case-*.jar
       ```
+      
+<note>
+If you want to connect to your custom server, follow the instructions in <a href="Connecting-to-a-custom-server.md">this</a> guide.
+</note>
 
 ## Building the Client Manually
 
@@ -30,12 +34,15 @@ If you prefer to build the game from source, follow these steps:
    git clone https://github.com/under-the-oaks/ColdCase-Client.git
    ```
 
-2. **Make Gradle wrapper executable:**
+2. **(only on Linux) Make Gradle wrapper executable:**
    ```sh
    chmod +x ./gradlew
    ```
 
 3. **Build the release version:**
+   <note>
+      change the command to <code>.\gradlew release</code> on Windows.
+   </note>
    ```sh
    ./gradlew release
    ```
