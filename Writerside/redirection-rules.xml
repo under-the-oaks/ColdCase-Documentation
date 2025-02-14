@@ -42,4 +42,8 @@
         <description>Created after removal of "Topic title" from ColdCaseDocumentation</description>
         <accepts>Gameplay.html</accepts>
     </rule>
+    <rule id="3233c5af">
+        <description>Created after removal of "Time Management" from ColdCaseDocumentation</description>
+        <accepts>Time-Management.html</accepts>
+    </rule>
 </rules>

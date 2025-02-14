@@ -245,7 +245,7 @@ The system is optimized for responsiveness:
 
 ---
 
-## 8. Diagram
+## 8. Class-Diagram
 
-TODO UML-KLASSENDIAGRAM (LIEGT AUF PC ZUHAUSE)
+![Class-Diagram of GameController](GameController_2.svg)
 

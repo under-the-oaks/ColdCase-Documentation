@@ -1,4 +1,4 @@
-# Quality Assurance
+# Testing Strategy
 
 Our test strategy for **Coldcase** is designed to ensure a robust, maintainable product. We combine unit tests, integration tests, and manual testing with quality gates that help us maintain high standards throughout development.
 
